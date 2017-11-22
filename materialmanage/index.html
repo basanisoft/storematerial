@@ -1,0 +1,99 @@
+<html ng-app="crudApp">
+<head>
+<title>Store Material Management</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Include Bootstrap CSS -->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<!-- Include main CSS -->
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<!-- Include jQuery library -->
+<script src="js/jQuery/jquery.min.js"></script>
+<!-- Include AngularJS library -->
+<script src="lib/angular/angular.min.js"></script>
+<!-- Include Bootstrap Javascript -->
+<script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container wrapper" ng-controller="DbController">
+<h1 class="text-center">Material Management</h1>
+
+
+
+<nav class="navbar navbar-default">
+
+<div class="col-md-8 col-sm-12">
+	<div class="navbar-header">
+<div class="alert alert-default navbar-brand search-box">
+<button class="btn btn-primary" ng-show="show_form" ng-click="formToggle()">Add Material To Store <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+</div>
+<div class="alert alert-default input-group search-box">
+<span class="input-group-btn">
+<input type="text" class="form-control" placeholder="Search Material Details Into Database..." ng-model="search_query">
+
+</span>
+</div>
+</div>
+</div>
+
+<div class="col-md-4 col-sm-12">
+	<span class="pull-right t-m-18">
+<button class="btn btn-primary" ng-show="show_form" ng-click="addStore()">Manage Store <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+<button class="btn btn-primary" ng-show="show_form" ng-click="addMaterial()">Manage Material <span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
+</span>
+</div>
+
+
+
+
+
+
+
+</nav>
+<div class="col-md-6 col-md-offset-3">
+
+<!-- Include form template which is used to insert data into database -->
+<div ng-include src="'templates/form.html'"></div>
+
+<!-- Include form template which is used to edit and update data into database -->
+<div ng-include src="'templates/editForm.html'"></div>
+<div ng-include src="'templates/addstore.html'"></div>
+<div ng-include src="'templates/addMaterial.html'"></div>
+
+
+</div>
+<div class="clearfix"></div>
+
+<!-- Table to show employee detalis -->
+<div class="table-responsive">
+<table class="table table-hover">
+<tr>
+<th> ID</th>
+<th>Store Name</th>
+<th>Material Name</th>
+<th>Qty</th>
+<th>Description</th>
+<th></th>
+<th></th>
+</tr>
+<tr ng-repeat="detail in details| filter:search_query">
+<td>
+<span>{{detail.id}}</span></td>
+<td>{{detail.store.store_name}}</td>
+<td>{{detail.material.name}}</td>
+<td>{{detail.quantity}}</td>
+<td>{{detail.material.description}}</td>
+<td>
+<button class="btn btn-warning" ng-click="editInfo(detail)" title="Edit"><span class="glyphicon glyphicon-edit"></span></button>
+</td>
+<td>
+<button class="btn btn-danger" ng-click="deleteInfo(detail)" title="Delete"><span class="glyphicon glyphicon-trash"></span></button>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<!-- Include controller -->
+<script src="js/angular-script.js"></script>
+</body>
+</html>

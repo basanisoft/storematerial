@@ -1,0 +1,37 @@
+<!-- Form used for updation of data into database -->
+<form class="form-horizontal alert alert-warning" id="editForm" ng-submit="UpdateInfo(currentStoreMaterial)" hidden>
+<h3 class="text-center">Update Material in Store</h3>
+	<div class="form-group">
+		<label for="Name">Store:</label>		
+        
+        <select name="store_id" id="store_id" ng-model="sotreMatInfo.store_id" class="form-control" ng-init="{{sotreMatInfo.store_id = currentStoreMaterial.store.id}}" required >
+       
+      <option ng-repeat="option in selectStore" value="{{option.id}}">{{option.store_name}}</option>
+    </select>
+        
+        
+        
+        
+	</div>
+	
+	<div class="form-group">
+		<label for="Email">Material:</label>
+		<select name="material_id" id="material_id" ng-model="sotreMatInfo.material_id" ng-model="currentStoreMaterial.material_id" class="form-control" required  ng-init="{{sotreMatInfo.material_id = currentStoreMaterial.material.id}}">
+       
+      <option ng-repeat="option in selcetMaterial" value="{{option.id}}">{{option.name}}</option>
+    </select>
+	</div>
+		
+	
+	<div class="form-group">
+		<label for="Address">Quantity:</label>
+		<!--<input type="text" class="form-control" ng-model="currentStoreMaterial.quantity" value="{{currentStoreMaterial.emp_address}}">-->
+        
+        <input type="text" name="quantity" class="form-control" placeholder="Enter Quantity" ng-model="currentStoreMaterial.quantity" autofocus required />	
+        
+        
+	</div>
+	<div class="form-group">
+		<button class="btn btn-warning" ng-disabled="empList.$invalid" ng-click="updateStoreMaterial(currentStoreMaterial.id)">Update</button>
+	</div>
+</form>
