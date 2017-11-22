@@ -54,8 +54,10 @@ Step 9:
 Assuming your gaphql folder is located at D:/graphql
 Go to the command prompt.
 enter cd D: and press enter
-cd graphql and press enter
-finally enter npm start and press enter
+cd graphql and press enter,
+Run Commands
+$npm install
+$npm start
 Now server should is ready
 Open the browser and enter http:// localhost:8088/graphql.
 if this works well we are good to go
